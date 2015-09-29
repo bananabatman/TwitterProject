@@ -15,6 +15,7 @@ function initMap(){
 filterOnCategory(){	
 	//send request to model containing category as parameter
 	//=> in model(index) selected query is executed returning hashtags where category = input
+	//=> Index.js calls updateMarkers()
 }
 
 
