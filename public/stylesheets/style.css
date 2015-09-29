@@ -1,3 +1,19 @@
 .btn {
 	background-color: red;
 }
+
+.map  {
+	margin-top:200px;
+	height:500px;
+	margin-bottom:200px;
+}
+
+.headline {
+	margin-top:50px;
+	margin-left: auto;
+	margin-right: auto;
+	font-weight:bold;
+	font:Helvetica;
+	font-size: 50px;
+	text-align: center;
+}
