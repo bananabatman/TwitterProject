@@ -28,3 +28,23 @@ router.get('/', function(req, res, next) {
 module.exports = router;
 
 
+router.post('/api/filterOnCategory', function(req, res) {
+        //=> Query is executed returning hashtags where category = input(the input is the category)
+		//=> call updateMarkers()	
+        console.log('got to server');
+        var results=[];
+        var data = {category:category};
+        console.log(data.category);
+        var query = apiClient.query("SELECT * FROM hashtags WHERE category = '" + data.category + "'");
+        console.log(query);
+        
+        query.on('row', function (row) { 
+            results.push(row);
+        });
+        query.on('end', function(){
+            return res.json(results);
+        });
+        
+        
+        // send resluts to updateMarkers()
+});

@@ -12,10 +12,18 @@ function initMap(){
     }
     
 
-function filterOnCategory(){	
+function filterOnCategory(category){
 	//send request to model containing category as parameter
 	//=> in model(index) selected query is executed returning hashtags where category = input
-	//=> Index.js calls updateMarkers()
+	//=> Index.js calls updateMarkers()	
+	        console.log(category);
+        var request = $.ajax({
+            url: "/api/filterOnCategory",
+            type: "POST",
+            data: {category:category},
+            cache: false
+        }); console.log(request);
+
 }
 
 
