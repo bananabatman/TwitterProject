@@ -35,6 +35,27 @@ function filterOnCategory(category){
 }
 
 
+function filterOnHashtag(hashtag){
+	//takes a hashtag as input and sends it to index.js whihch retreives all those hashtags as an array from the database
+	//Then calls updateMArkers()
+	        console.log(hashtag);
+        var request = $.ajax({
+            url: "/api/filterOnHashtag",
+            type: "POST",
+            data: {hashtag:hashtag},
+            cache: false
+        }); console.log(request);
+        
+        request.done(function(res) {	
+        		console.log(res);
+        		updateMarkers(res);  // sends resluts to updateMarkers(), Kanske måste ta ur bara lat och long och skicka
+        	});
+	
+	// return request;	
+
+}
+
+
 function fullScreenMap(){	//Mesele
 	//makes map full screen/normal size
 }
