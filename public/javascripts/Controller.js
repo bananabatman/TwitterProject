@@ -9,6 +9,7 @@ function initMap(){
     map.doubleClickZoom.disable();
     map.setView(new L.LatLng(59.332788, 18.064488),8);
     map.addLayer(osm);
+    filterOnCategory('sport');
     }
     
 
@@ -23,28 +24,29 @@ function filterOnCategory(category){
             data: {category:category},
             cache: false
         }); console.log(request);
+        
+        request.done(function(res) {	
+        		console.log(res);
+        		updateMarkers(res);  // sends resluts to updateMarkers(), Kanske måste ta ur bara lat och long och skicka
+        	});
+	
+	// return request;	
 
 }
 
 
-function highlightOption(){	
-	//show that hashtag is chosen and dull out the other hashtags updateMarkers
-	//if top5 clicked clear everything/update markers
-}
-
-
-function fullScreenMap(){	
+function fullScreenMap(){	//Mesele
 	//makes map full screen/normal size
 }
 
 
 function updateMarkers(hashtags){	
-	//function update top 5:
+	//Used for all updates, both from category and showing specific hashtag
 	//remove old hashtags and replace with new hashtags
 	//Input: objects with lat- long-attributes
 }
 
-function updateMap(position){
+function updateMap(position){ //Mesele
 	//move to cntre and zoom for location and district	
 	//if position = gamla stan -> go to position
 	//if position = my location -> {get location}
@@ -53,7 +55,7 @@ function updateMap(position){
 function determineTopFive(category){	
 }
 
-function getUserLocations(){	
+function getUserLocations(){	//Mesele
 }
 
 function insertUserLocation(){	

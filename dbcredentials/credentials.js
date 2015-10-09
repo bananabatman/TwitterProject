@@ -1,10 +1,10 @@
 var pg = require('pg');
 
-var host ='localhost';
+var host ='130.237.64.8';
 var port ='5432';
-var dbName = 'ProjWebGIS';
-var username = 'postgres';
-var password = 'password';
+var dbName = 'spatial_db';
+var username = 'group1';
+var password = 'banana';
 
 var connectionString = 'postgres://'+username+':'+password+'@'+host+':'+port+'/'+dbName;
 
@@ -20,9 +20,9 @@ var queryCreateUserTable = client.query('CREATE TABLE if not exists tweets (twee
 var queryCreateMarkerTable = client.query('CREATE TABLE if not exists stalker (marker_id serial not null, user_id bigint not null, latitude double precision, longitude double precision)');
 
 //Execute queries
-queryCreateUserTable.on('end', function() {
-		queryCreateMarkerTable.on('end', function() {
-			client.end();
-		})
-});
+//queryCreateUserTable.on('end', function() {
+//		queryCreateMarkerTable.on('end', function() {
+//			client.end();
+//		})
+//});
 

@@ -33,18 +33,18 @@ router.post('/api/filterOnCategory', function(req, res) {
 		//=> call updateMarkers()	
         console.log('got to server');
         var results=[];
-        var data = {category:category};
-        console.log(data.category);
-        var query = apiClient.query("SELECT * FROM hashtags WHERE category = '" + data.category + "'");
+        var data = req.body; //the body of the request contains the sent parameters(category)
+        console.log(data);
+        var query = apiClient.query("SELECT * FROM group1schema.tweets WHERE category = $$" + data.category + "$$");
         console.log(query);
         
         query.on('row', function (row) { 
+        	console.log(row);
             results.push(row);
         });
         query.on('end', function(){
+        	console.log(results);
             return res.json(results);
         });
         
-        
-        // send resluts to updateMarkers()
 });
