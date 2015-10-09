@@ -1,6 +1,9 @@
-.btn-primary {
-    background: #0099cc;
-    color: #ffffff;
+.head .well{
+	background-color: #b29d85;
+
+.btn {
+    background: red;
+    color: red;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
     background: #33a6cc;
