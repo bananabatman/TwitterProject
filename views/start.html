@@ -3,7 +3,7 @@
 	<head>
 		<!-- Stylesheets -->
 		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
-		<link rel="stylesheet" href="public/stylesheets/style.css" />
+		<link rel="stylesheet" href="../public/stylesheets/style.css" />
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 		<!-- Scripts -->
@@ -11,16 +11,19 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 		<script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
-		<script src="/javascripts/Controller.js" type="text/javascript"></script>
+		<script src="../public/javascripts/Controller.js" type="text/javascript"></script>
 	</head>
 
-	<body onload="initMap();">
+	<body onload="initMap();" id="bodyId">
 		<div class="container">
+			
+			<!-- Heading #TOP5 -->
 			<div class="row">
-				<div class="col-sm-4 headline">
-					<p>#TOP5</p>
+				<div class="span12">
+					<div id="header">#TOP5</div>
 				</div>
 			</div>
+<<<<<<< HEAD
 			<div class = "row">
 				<button type="button" class="btn btn-primary">FirstHashtag</button>
 				<button type="button" class="btn btn-primary">SecondHastag</button>
@@ -28,18 +31,51 @@
 				<button type="button" class="btn btn-primary">SecondHastag</button>
 				<button type="button" class="btn btn-primary">SecondHastag</button>
 				<button type="button" class="btn btn-primary">SecondHastag</button>
+=======
+			
+			<!-- Buttons -->
+			<div class="row">
+				<div class="col-md-2">
+					<div style="text-align:center; margin-bottom: 10px;">
+						<a href="#" class="butt1">#First</a>
+						<a href="#" class="butt1">#Second</a>
+					</div>
+				</div>
+>>>>>>> pls
 			</div>
-			<div class = "row">
-				<button type="button" class="btn btn-primary">ThirdHashtag</button>
-				<button type="button" class="btn btn-primary">ForthHastag</button>
+			
+			<div class="row">
+				<div class="col-md-2">
+					<div style="text-align:center; margin-bottom: 10px;">
+						<a href="#" class="butt1">#adwefawefaw</a>
+						<a href="#" class="butt1">#we</a>
+					</div>
+				</div>
 			</div>
-			<div class = "row">
-				<button type="button" class="btn btn-primary">FifthHashtag</button>
-				<button type="button" class="btn btn-primary">Categories</button>
+			
+			<div class="row">
+				<div class="col-md-2">
+					<div style="text-align:center;">
+						<a href="#" class="butt1">#5th</a>
+						<a href="#" class="butt1">#cat</a>
+					</div>
+				</div>
 			</div>
+			
+			<!-- Map -->
 			<div class="row">
 				<div id="map" class="map"></div>
 			</div>
+			
+			<div class="row">
+				<div class="col-md-2">
+					<div style="text-align:center;">
+						<a href="#" class="butt2">Location</a>
+						<a href="#" class="butt2">Districts</a>
+					</div>
+				</div>
+			</div>
+			
 		</div>
 	</body>
 </html>
