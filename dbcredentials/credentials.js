@@ -1,6 +1,6 @@
 var pg = require('pg');
 
-var host ='localhost';
+var host ='130.237.64.7';
 var port ='5432';
 var dbName = 'webgis_lab3';
 var username = 'postgres';
