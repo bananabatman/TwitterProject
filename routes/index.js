@@ -48,3 +48,24 @@ router.post('/api/filterOnCategory', function(req, res) {
         });
         
 });
+
+
+router.post('/api/filterOnHashtag', function(req, res) {
+        //=> Query is executed returning hashtags=input
+        console.log('got to server');
+        var results=[];
+        var data = req.body; //the body of the request contains the sent parameters(hashtag)
+        console.log(data);
+        var query = apiClient.query("SELECT * FROM group1schema.tweets WHERE hashtag = $$" + data.hashtag + "$$");
+        console.log(query);
+        
+        query.on('row', function (row) { 
+        	console.log(row);
+            results.push(row);
+        });
+        query.on('end', function(){
+        	console.log(results);
+            return res.json(results);
+        });
+        
+});
