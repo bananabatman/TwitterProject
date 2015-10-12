@@ -16,7 +16,6 @@ function initMap(){
 function filterOnCategory(category){
 	//send request to model containing category as parameter
 	//=> in model(index) selected query is executed returning hashtags where category = input
-	//=> Index.js calls updateMarkers()	
 	        console.log(category);
         var request = $.ajax({
             url: "/api/filterOnCategory",
@@ -33,6 +32,27 @@ function filterOnCategory(category){
 	// return request;	
 
 }
+
+function filterOnHashtag(hashtag){
+	//send request to model containing hashtag as parameter
+	//=> in model(index) selected query is executed returning hashtags=input
+	        console.log(category);
+        var request = $.ajax({
+            url: "/api/filterOnHashtag",
+            type: "POST",
+            data: {hashtag:hashtag},
+            cache: false
+        }); console.log(request);
+        
+        request.done(function(res) {	
+        		console.log(res);
+        		updateMarkers(res);  // sends resluts to updateMarkers(), Kanske måste ta ur bara lat och long och skicka
+        	});
+	
+	// return request;	
+
+}
+
 
 
 function filterOnHashtag(hashtag){
@@ -61,7 +81,7 @@ function fullScreenMap(){	//Mesele
 }
 
 
-function updateMarkers(hashtags){	
+function updateMarkers(tweets){	
 	//Used for all updates, both from category and showing specific hashtag
 	//remove old hashtags and replace with new hashtags
 	//Input: objects with lat- long-attributes

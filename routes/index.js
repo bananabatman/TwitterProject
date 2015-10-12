@@ -30,7 +30,6 @@ module.exports = router;
 
 router.post('/api/filterOnCategory', function(req, res) {
         //=> Query is executed returning hashtags where category = input(the input is the category)
-		//=> call updateMarkers()	
         console.log('got to server');
         var results=[];
         var data = req.body; //the body of the request contains the sent parameters(category)
@@ -51,7 +50,11 @@ router.post('/api/filterOnCategory', function(req, res) {
 
 
 router.post('/api/filterOnHashtag', function(req, res) {
+<<<<<<< HEAD
         //=> Query is executed returning hashtags=input
+=======
+        //=> Query is executed returning hashtags=input	
+>>>>>>> my-feature-branch
         console.log('got to server');
         var results=[];
         var data = req.body; //the body of the request contains the sent parameters(hashtag)
@@ -69,3 +72,25 @@ router.post('/api/filterOnHashtag', function(req, res) {
         });
         
 });
+<<<<<<< HEAD
+=======
+
+router.post('/api/top5', function(req, res){
+		//takes noting as input returning the name of the top 5 hashtags
+		console.log('got to server');
+		var results = [];
+		//var data = req.body; NOT NEEDED?
+		var query = apiClient.query("SELECT * FROM(SELECT hashtag, count(*) as foo FROM group1schema.tweets GROUP BY hashtag) as moo ORDER BY foo desc limit 5");
+		consloe.log(query);
+		
+		query.on('row', function(row){
+			consloe.log(row);
+			result.push(row);
+		});
+		
+		query.on('end', function(){
+        	console.log(results);
+            return res.json(results);
+        });
+});
+>>>>>>> my-feature-branch
