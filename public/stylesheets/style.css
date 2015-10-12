@@ -5,12 +5,16 @@
 #header{
 	font-size: 200%;
 	font-family: 'Calibri', sans-serif;
-	color: #D2DDF9; 
+	color: #ffffff; 
 	font-weight: 900;
 	}
 
 #bodyId{
 	background-color: #105978;
+}
+
+.dropdown-toggle {
+    border: 0px;
 }	
 
 .butt1{
