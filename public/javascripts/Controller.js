@@ -60,7 +60,7 @@ function fullScreenMap(){	//Mesele
 }
 
 
-function updateMarkers(hashtags){	
+function updateMarkers(tweets){	
 	//Used for all updates, both from category and showing specific hashtag
 	//remove old hashtags and replace with new hashtags
 	//Input: objects with lat- long-attributes
