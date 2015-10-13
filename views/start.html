@@ -20,17 +20,29 @@
 			<!-- Heading #TOP5 -->
 			<div class="row">
 				<div class="span12">
-					<div id="header">#TOP5</div>
+					<div id="header" onclick="filterOnHashtag(hashtag)">#TOP5</div>
 				</div>
 			</div>
+<<<<<<< HEAD
+			
+			<!-- Top 5 buttons -->
+			<div class="row">
+				<div class="col-md-2">
+					<div style="text-align:center; margin-bottom: 10px;">
+						<a href="#" class="butt1" id="hash1" onclick="filterOnHashtag(hashtag)">#adwefawefaw</a>
+						<a href="#" class="butt1" id="hash2" onclick="filterOnHashtag(hashtag)">#we</a>
+					</div>
+				</div>
+=======
 
+>>>>>>> my-feature-branch
 			</div>
 			
 			<div class="row">
 				<div class="col-md-2">
 					<div style="text-align:center; margin-bottom: 10px;">
-						<a href="#" class="butt1">#adwefawefaw</a>
-						<a href="#" class="butt1">#we</a>
+						<a href="#" class="butt1" id="hash3" onclick="filterOnHashtag(hashtag)">#3</a>
+						<a href="#" class="butt1" id="hash4" onclick="filterOnHashtag(hashtag)">#4</a>
 					</div>
 				</div>
 			</div>
@@ -38,8 +50,23 @@
 			<div class="row">
 				<div class="col-md-2">
 					<div style="text-align:center;">
-						<a href="#" class="butt1">#5th</a>
-						<a href="#" class="butt1">#cat</a>
+						<a href="#" class="butt1" id="hash5" onclick="filterOnCategory(category)">#5th</a>
+						<div class="btn-group">
+                 			<button type="button" class="butt1 dropdown-toggle" data-toggle="dropdown">
+                   				<span data-bind="label">Categories</span>&nbsp;<span class="caret"></span>
+                 			</button>
+                 		<ul class="dropdown-menu" role="menu">
+                   			<option value="Sports">Sports</option>
+                   			<option value="Party">Party</option>
+                   			<option value="Food">Food</option>
+                   			<option value="Music">Music</option>
+                   			<option value="Clubbing">Clubbing</option>
+                   			<option value="Selfie">Selfie</option>
+                   			<option value="Fika">Fika</option>
+                   			<option value="Tourist">Tourist</option>
+                   			<option value="Tourist">Entertainment</option>
+                 		</ul>
+              			</div>
 					</div>
 				</div>
 			</div>
@@ -49,15 +76,40 @@
 				<div id="map" class="map"></div>
 			</div>
 			
+			<!-- Location and District Buttons -->
 			<div class="row">
 				<div class="col-md-2">
 					<div style="text-align:center;">
-						<a href="#" class="butt2">Location</a>
-						<a href="#" class="butt2">Districts</a>
+						<a href="#" class="butt2" id="locButt" onclick="getUserLocations()">Location</a>
+						<div class="btn-group dropup">
+                 			<button type="button" class="butt2 dropdown-toggle dropup" data-toggle="dropdown">
+                   				<span data-bind="label">Districts</span>&nbsp;<span class="caret"></span>
+                 			</button>
+                 		<ul class="dropdown-menu" role="menu">
+                   			<option value="Gamla Stan">Gamla Stan</option>
+                   			<option value="Norrmalm">Norrmalm</option>
+                  			<option value="Soldermalm">Soldermalm</option>
+                  			<option value="Kungsholmen">Kungsholmen</option>
+                  			<option value="Ostermalm">Ostermalm</option>
+                  			<option value="Vasastan">Vasastan</option>
+                  			<option value="Djurgarden">Djurgarden</option>
+                  			
+                  			<!-- New York Districts
+                  				<li><a href="#" onclick="filterOnDistrict(district)">The Bronx</a></li>
+                  				<li><a href="#" onclick="filterOnDistrict(district)">Brooklyn</a></li>
+                  				<li><a href="#" onclick="filterOnDistrict(district)">Manhattan</a></li>
+                  				<li><a href="#" onclick="filterOnDistrict(district)">Queens</a></li>
+                  				<li><a href="#" onclick="filterOnDistrict(district)">Staten Island</a></li>
+                  				<li><a href="#" onclick="filterOnDistrict(district)">Jersey City???</a></li>
+                  				 -->
+                  			
+                 		</ul>
+              			</div>
 					</div>
 				</div>
 			</div>
 			
 		</div>
+
 	</body>
 </html>
