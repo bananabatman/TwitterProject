@@ -10,7 +10,7 @@ function initMap(){
     map.doubleClickZoom.disable();
     map.setView(new L.LatLng(59.332788, 18.064488),8);
     map.addLayer(osm);
-   // determineTopFive();
+   	determineTopFive();
     }
     
 
@@ -91,12 +91,6 @@ function fullScreenMap(){	//Mesele
 }
 
 
-function updateMarkers(tweets){	
-	//Used for all updates, both from category and showing specific hashtag
-	//remove old hashtags and replace with new hashtags
-	//Input: objects with lat- long-attributes
-}
-
 function updateMap(position){ //Mesele
 	//move to cntre and zoom for location and district	
 	//if position = gamla stan -> go to position
@@ -112,7 +106,8 @@ function determineTopFive(){
         }); console.log(request);
   	
         	request.done(function(res) {
-	        	map.eachLayer(function (layer) {
+        		
+	        	/*map.eachLayer(function (layer) {
 	        		if (layer != osm){
     				map.removeLayer(layer);}
 				});		
@@ -124,8 +119,12 @@ function determineTopFive(){
 		            }
 		            else {
 	                console.log("There are no locations for these hashtags");
-	            	}
-	            console.log(res[i]);
+	            	} */
+	          	for(i=0; i<res.length ; i++) 
+	          	
+	           { console.log(res[i].hashtag);
+	           	//console.log($.document.getElementById("bla"));
+	           document.getElementById((i+1)+"").innerHTML=res[i].hashtag;
 	            }
 	        });
 }
