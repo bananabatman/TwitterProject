@@ -50,11 +50,8 @@ router.post('/api/filterOnCategory', function(req, res) {
 
 
 router.post('/api/filterOnHashtag', function(req, res) {
-<<<<<<< HEAD
         //=> Query is executed returning hashtags=input
-=======
-        //=> Query is executed returning hashtags=input	
->>>>>>> my-feature-branch
+
         console.log('got to server');
         var results=[];
         var data = req.body; //the body of the request contains the sent parameters(hashtag)
@@ -72,8 +69,6 @@ router.post('/api/filterOnHashtag', function(req, res) {
         });
         
 });
-<<<<<<< HEAD
-=======
 
 router.post('/api/top5', function(req, res){
 		//takes noting as input returning the names of the top 5 hashtags
@@ -92,4 +87,4 @@ router.post('/api/top5', function(req, res){
             return res.json(results);
         });
 });
->>>>>>> my-feature-branch
+

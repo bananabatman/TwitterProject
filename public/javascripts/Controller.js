@@ -10,14 +10,19 @@ function initMap(){
     map.doubleClickZoom.disable();
     map.setView(new L.LatLng(59.332788, 18.064488),8);
     map.addLayer(osm);
-    determineTopFive();
+   // determineTopFive();
     }
     
 
 function filterOnCategory(){
 	//send request to model containing category as parameter
 	//=> in model(index) selected query is executed returning hashtags where category = input
-	    var category = document.getElementById("category");
+
+	    var $target = $( event.currentTarget );
+      		$target.closest( '.btn-group' ).find( '[data-bind="label"]' ).text( $target.text() ).end().children( '.dropdown-toggle' ).dropdown( 'toggle' );
+        var category = $.trim(($target.text()));
+        console.log(category);
+    
         var request = $.ajax({
             url: "/api/filterOnCategory",
             type: "POST",
@@ -47,7 +52,13 @@ function filterOnCategory(){
 function filterOnHashtag(hashtag){
 	//send request to model containing hashtag as parameter
 	//=> in model(index) selected query is executed returning hashtags=input
-	        console.log(category);
+	
+	var $target = $( event.currentTarget );
+      		$target.closest( '.butt1' ).find( '[data-bind="label"]' ).text( $target.text() ).end();
+        var hashtag = $.trim(($target.text()));
+        console.log(hashtag);
+	     
+	     
         var request = $.ajax({
             url: "/api/filterOnHashtag",
             type: "POST",
@@ -72,28 +83,6 @@ function filterOnHashtag(hashtag){
 		            console.log(res[i]);
 	        	}
         	});
-}
-
-
-
-function filterOnHashtag(hashtag){
-	//takes a hashtag as input and sends it to index.js whihch retreives all those hashtags as an array from the database
-	//Then calls updateMArkers()
-	        console.log(hashtag);
-        var request = $.ajax({
-            url: "/api/filterOnHashtag",
-            type: "POST",
-            data: {hashtag:hashtag},
-            cache: false
-        }); console.log(request);
-        
-        request.done(function(res) {	
-        		console.log(res);
-        		updateMarkers(res);  // sends resluts to updateMarkers(), Kanske måste ta ur bara lat och long och skicka
-        	});
-	
-	// return request;	
-
 }
 
 
