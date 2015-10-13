@@ -1,18 +1,11 @@
 var pg = require('pg');
 
-<<<<<<< HEAD
 var host ='130.237.64.8';
 var port ='5432';
 var dbName = 'spatial_db';
 var username = 'group1';
 var password = 'banana';
-=======
-var host ='130.237.64.7';
-var port ='5432';
-var dbName = 'webgis_lab3';
-var username = 'postgres';
-var password = 'password';
->>>>>>> pls
+
 
 var connectionString = 'postgres://'+username+':'+password+'@'+host+':'+port+'/'+dbName;
 

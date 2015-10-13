@@ -76,16 +76,15 @@ router.post('/api/filterOnHashtag', function(req, res) {
 =======
 
 router.post('/api/top5', function(req, res){
-		//takes noting as input returning the name of the top 5 hashtags
+		//takes noting as input returning the names of the top 5 hashtags
 		console.log('got to server');
 		var results = [];
-		//var data = req.body; NOT NEEDED?
 		var query = apiClient.query("SELECT * FROM(SELECT hashtag, count(*) as foo FROM group1schema.tweets GROUP BY hashtag) as moo ORDER BY foo desc limit 5");
-		consloe.log(query);
+		console.log(query);
 		
 		query.on('row', function(row){
-			consloe.log(row);
-			result.push(row);
+			console.log(row);
+			results.push(row);
 		});
 		
 		query.on('end', function(){
