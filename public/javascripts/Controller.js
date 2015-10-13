@@ -1,22 +1,23 @@
 var thisUserMarker; 
 var map;
 var admin;
+var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 17, attribution: osmAttrib});
+
 function initMap(){
-	var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-	var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-	var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 12, attribution: osmAttrib});
     map = new L.Map('map');
     map.doubleClickZoom.disable();
     map.setView(new L.LatLng(59.332788, 18.064488),8);
     map.addLayer(osm);
-    filterOnCategory('sport');
+    determineTopFive();
     }
     
 
-function filterOnCategory(category){
+function filterOnCategory(){
 	//send request to model containing category as parameter
 	//=> in model(index) selected query is executed returning hashtags where category = input
-	        console.log(category);
+	    var category = document.getElementById("category");
         var request = $.ajax({
             url: "/api/filterOnCategory",
             type: "POST",
@@ -25,12 +26,22 @@ function filterOnCategory(category){
         }); console.log(request);
         
         request.done(function(res) {	
-        		console.log(res);
-        		updateMarkers(res);  // sends resluts to updateMarkers(), Kanske måste ta ur bara lat och long och skicka
+	        	map.eachLayer(function (layer) {
+	        		if (layer != osm){
+    				map.removeLayer(layer);}
+				});
+	        	for(i=0; i<res.length;i++) {
+		            if(res[i]!=null) { 
+		                var marker = L.latLng(res[i].latitude, res[i].longitude);
+		                console.log(res[i].hashtag);
+		                L.marker(marker).addTo(map).bindPopup(res[i].hashtag);
+		            }
+		            else {
+		                console.log("There is no hashtags in this category");
+		            }
+		            console.log(res[i]);
+	        	}
         	});
-	
-	// return request;	
-
 }
 
 function filterOnHashtag(hashtag){
@@ -44,13 +55,23 @@ function filterOnHashtag(hashtag){
             cache: false
         }); console.log(request);
         
-        request.done(function(res) {	
-        		console.log(res);
-        		updateMarkers(res);  // sends resluts to updateMarkers(), Kanske måste ta ur bara lat och long och skicka
+        request.done(function(res) {
+	        	map.eachLayer(function (layer) {
+	        		if (layer != osm){
+    				map.removeLayer(layer);}
+				});	
+	        	for(i=0; i<res.length;i++) {
+		            if(res[i]!=null) { 
+		                var latlng = L.latLng(res[i].latitude, res[i].longitude);
+		                console.log(res[i].category);
+		                L.marker(latlng).addTo(map).bindPopup(res[i].category);
+		            }
+		            else {
+		                console.log("There is no locations for this hashtag");
+		            }
+		            console.log(res[i]);
+	        	}
         	});
-	
-	// return request;	
-
 }
 
 
@@ -72,7 +93,31 @@ function updateMap(position){ //Mesele
 	//if position = my location -> {get location}
 }
 
-function determineTopFive(category){	
+function determineTopFive(){	
+		//Ask index.js to get the top5 used hashtags and returning them
+        var request = $.ajax({
+            url: "/api/top5",
+            type: "POST",
+            cache: false
+        }); console.log(request);
+  	
+        	request.done(function(res) {
+	        	map.eachLayer(function (layer) {
+	        		if (layer != osm){
+    				map.removeLayer(layer);}
+				});		
+	        	for(i=0; i<res.length;i++) {
+		            if(res[i]!=null) { 
+		                var latlng = L.latLng(res[i].latitude, res[i].longitude);
+		                console.log(res[i].hashtag);
+		                L.marker(latlng).addTo(map).bindPopup(res[i].hashtag);
+		            }
+		            else {
+	                console.log("There are no locations for these hashtags");
+	            	}
+	            console.log(res[i]);
+	            }
+	        });
 }
 
 function getUserLocations(){	//Mesele
