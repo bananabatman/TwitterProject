@@ -6,12 +6,17 @@
 		<link rel="stylesheet" href="/stylesheets/style.css" />
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
+
 		<!-- Scripts -->
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 		<script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
 		<script src="/javascripts/Controller.js" type="text/javascript"></script>
+
+		
+
+
 	</head>
 
 	<body onload="initMap();" id="bodyId">
@@ -67,8 +72,8 @@
 			</div>
 			
 			<!-- Map -->
-			<div class="row">
-				<div id="map" class="map"></div>
+			<div class="row" id="maprow">
+				<div id="map" onclick = "toggleFullScreen()" class="map"></div>
 			</div>
 			
 			<!-- Location and District Buttons -->
@@ -77,17 +82,17 @@
 					<div style="text-align:center;">
 						<a href="#" class="butt2" id="locButt" onclick="getUserLocations()">Location</a>
 						<div class="btn-group dropup">
-                 			<button type="button" class="butt2 dropdown-toggle dropup" data-toggle="dropdown">
+                 			<button type="button" class="butt2 dropdown-toggle dropup" data-toggle="dropdown" id="catbutt">
                    				<span data-bind="label">Districts</span>&nbsp;<span class="caret"></span>
                  			</button>
                  		<ul class="dropdown-menu" role="menu">
-                   			<option value="Gamla Stan">Gamla Stan</option>
-                   			<option value="Norrmalm">Norrmalm</option>
-                  			<option value="Sodermalm">Soldermalm</option>
-                  			<option value="Kungsholmen">Kungsholmen</option>
-                  			<option value="Ostermalm">Ostermalm</option>
-                  			<option value="Vasastan">Vasastan</option>
-                  			<option value="Djurgarden">Djurgarden</option>
+                   			<li onclick="updateMap()" value="Gamla Stan">Gamla Stan</li>
+                   			<li onclick="updateMap()" value="Norrmalm">Norrmalm</li>
+                  			<li onclick="updateMap()" value="Sodermalm">Sodermalm</li>
+                  			<li onclick="updateMap()" value="Kungsholmen">Kungsholmen</li>
+                  			<li onclick="updateMap()" value="Ostermalm">Ostermalm</li>
+                  			<li onclick="updateMap()" value="Vasastan">Vasastan</li>
+                  			<li onclick="updateMap()" value="Djurgarden">Djurgarden</li>
                   			
                   			<!-- New York Districts
                   				<li><a href="#" onclick="filterOnDistrict(district)">The Bronx</a></li>
