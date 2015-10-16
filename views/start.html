@@ -25,7 +25,7 @@
 			<!-- Heading #TOP5 -->
 			<div class="row">
 				<div class="span12">
-					<div id="header" onclick="filterOnHashtag(hashtag)">#TOP5</div>
+					<div id="header" onclick="determineTopFive()">#TOP5</div>
 				</div>
 			</div>
 
@@ -54,7 +54,7 @@
 				<div class="col-md-2">
 					<div style="text-align:center;">
 						<a href="#" class="butt1" id="5" onclick="filterOnHashtag()"> </a>
-						<div class="btn-group">
+						<div class="btn-group" id="buttcat">
                  			<button type="button" class="butt1 dropdown-toggle" data-toggle="dropdown">
                    				<span data-bind="label">Categories</span>&nbsp;<span class="caret"></span>
                  			</button>

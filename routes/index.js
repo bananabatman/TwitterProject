@@ -88,3 +88,22 @@ router.post('/api/top5', function(req, res){
         });
 });
 
+router.post('/api/top5distr', function(req, res){
+		//takes noting as input returning the names of the top 5 hashtags
+		console.log('got to server');
+		var data = req.body;
+		var results = [];
+		var query = apiClient.query("SELECT * from (SELECT hashtag, count(*) as foo FROM(select * from group1schema.tweets AS tweet, group1schema.polygons AS polygon WHERE polygon.district=  $$"
+		+ data.district + "$$ AND ST_CONTAINS(ST_GeomFromText(polygon.wkt), ST_MakePoint(tweet.latitude, tweet.longitude))=true) topfive GROUP BY hashtag) as moo ORDER BY foo DESC LIMIT 5");
+		console.log(query);
+		
+		query.on('row', function(row){
+			console.log(row);
+			results.push(row);
+		});
+		
+		query.on('end', function(){
+        	console.log(results);
+            return res.json(results);
+        });
+});
