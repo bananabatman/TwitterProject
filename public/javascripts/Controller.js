@@ -20,7 +20,7 @@ function filterOnCategory(){
 	//send request to model containing category as parameter
 	//=> in model(index) selected query is executed returning hashtags where category = input
 	    var $target = $( event.currentTarget );
-      	$target.closest( '.btn-group' ).find( '[data-bind="label"]' ).text( $target.text() ).end().children( '.dropdown-toggle' ).dropdown( 'toggle' );
+      	$target.closest( '.buttcat' ).find( '[data-bind="label"]' ).text( $target.text() ).end()/*.children( '.dropdown-toggle' ).dropdown( 'toggle' )*/;
         var category = $.trim(($target.text()));
         console.log(category);
     
@@ -120,6 +120,58 @@ function determineTopFive(){
 	  	});
 }
 
+function determineTopFiveDistrict(district){	
+		//Ask index.js to get the top5 used hashtags and returning the
+        var request = $.ajax({
+            url: "/api/top5distr",
+            type: "POST",
+            data: {district:district},
+            cache: false
+        }); console.log(request);
+        
+        
+        request.done(function(res) {
+        	console.log(res);
+        	if (res.length==5){
+	    		for(i=0; i<res.length ; i++) { 
+	    			console.log(res[i].hashtag);
+	    			console.log("HELLO YOU FIVE");
+	       			document.getElementById((i+1)+"").innerHTML=res[i].hashtag;
+	       		}
+	       	} else {
+	       		var tmp = 5-res.length;
+	       		for(i=0; i<res.length; i++){
+	       			console.log("RES "+i)
+	       			document.getElementById((i+1)+"").innerHTML=res[i].hashtag;
+	       			console.log("HELLO YOU");
+	       		}
+	       		for(i=res.length;i<=res.length;i++) {
+	       			console.log("TWERKING "+ i);
+	       			document.getElementById((i+1)+"").innerHTML="#nohashtag";
+	       		}
+	       	}
+	       	/*else if(res.length<5) {
+	       		var id = 5-res.length;
+	       		console.log("res"+res.length);
+	       		console.log("id+id");
+	       		alert("no hash, just brownies");
+	       		if(id>0){
+		       		for(i=0; i<res.length ; i++) {
+		    			console.log(res[i].hashtag);
+		       			document.getElementById((i)+"").innerHTML=res[i].hashtag;
+		       		}
+		       		
+		       		console.log("id"+id);
+	       		
+		       		for (i=res.length;i<id; i++){
+		       			document.getElementById((i)+"").innerHTML="#";
+		       		}
+		       	}
+	       		
+	       	}*/
+	  	});
+}
+
 function updateMap(distr){
 	
 	var $target = $( event.currentTarget );
@@ -158,6 +210,8 @@ function updateMap(distr){
 	     else {
 	     	map.setView([59.332788, 18.064488], 12);
 	     }
+	     
+	     determineTopFiveDistrict(distr);
 }
 
 function showPosition(position) {
